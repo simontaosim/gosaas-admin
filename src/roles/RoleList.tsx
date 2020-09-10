@@ -3,9 +3,9 @@ import {
     List, Datagrid, NumberField, DateField, TextField,Filter,TextInput,ReferenceInput,SelectInput
 } from 'react-admin';
 
-const UserFilter = (props:any) => (
+const RoleFilter = (props:any) => (
     <Filter {...props}>
-        <TextInput label="搜索：电话|用户名|邮箱" source="q" alwaysOn />
+        <TextInput label="搜索：角色名" source="q" alwaysOn />
         {/* <ReferenceInput label="User" source="userId" reference="users" allowEmpty>
             <SelectInput optionText="name" />
         </ReferenceInput> */}
@@ -13,15 +13,13 @@ const UserFilter = (props:any) => (
 );
 
 
-export const UserList = (props: any) => {
+export const RoleList = (props: any) => {
     return  (
-        <List  filters={<UserFilter />} sort={{ field: 'id', order: 'DESC' }} {...props} >
+        <List  filters={<RoleFilter />} sort={{ field: 'id', order: 'DESC' }} {...props} >
             <Datagrid rowClick="edit" >
                 <NumberField source="id" />
                 <DateField source="updated_at" showTime />
-                <TextField source="username" />
-                <TextField source="mobile" />
-                <TextField source="email" />
+                <TextField source="name" />
             </Datagrid>
         </List>
     );

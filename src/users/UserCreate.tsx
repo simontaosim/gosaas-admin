@@ -29,7 +29,7 @@ const validateUserCreation = async  (values:any) => {
 
 export const UserCreate = (props:any) => (
     <Create {...props}>
-        <SimpleForm >
+        <SimpleForm   redirect="list">
             <TextInput source="username"  />
             <TextInput source="mobile"   />
             <TextInput source="email"  />

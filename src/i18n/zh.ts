@@ -4,12 +4,15 @@ const zhCnMessages: TranslationMessages = {
 
     "Expectation Failed": "请求失败",
     "Failed to fetch": "服务器连接失败",
+    "username_already_exist": "用户名已存在",
+    "mobile_already_exist": "手机号已存在",
+    "email_already_exist": "邮箱已经存在",
     ra: {
         action: {
             add_filter: 'Add filter',
             add: 'Add',
             back: 'Go Back',
-            bulk_actions: '1 item selected |||| %{smart_count} items selected',
+            bulk_actions: '%{smart_count} 项被选中',
             cancel: 'Cancel',
             clear_input_value: 'Clear value',
             clone: 'Clone',
@@ -45,10 +48,10 @@ const zhCnMessages: TranslationMessages = {
             error: 'Something went wrong',
             list: '%{name}',
             loading: 'Loading',
-            not_found: 'Not Found',
+            not_found: '没有找到记录',
             show: '%{name} #%{id}',
-            empty: 'No %{name} yet.',
-            invite: 'Do you want to add one?',
+            empty: '还没有%{name}',
+            invite: '是否添加?',
         },
         input: {
             file: {
@@ -119,7 +122,7 @@ const zhCnMessages: TranslationMessages = {
             http_error: 'Server communication error',
             data_provider_error: 'dataProvider error. Check the console for details.',
             i18n_error: 'Cannot load the translations for the specified language',
-            canceled: 'Action cancelled',
+            canceled: '操作已经取消',
             logged_out: 'Your session has ended, please reconnect.',
         },
         validation: {
@@ -304,7 +307,28 @@ const zhCnMessages: TranslationMessages = {
         roles: {
             name: '角色',
             fields: {
-                products: 'Products',
+                id: '编号',
+                created_at: "创建于",
+                updated_at: "更新于",
+                name: "角色名",
+            },
+        },
+        firms: {
+            name: '公司',
+            fields: {
+                id: '编号',
+                created_at: "创建于",
+                updated_at: "更新于",
+                name: "公司名",
+            },
+        },
+        permissions: {
+            name: '权限',
+            fields: {
+                id: '编号',
+                created_at: "创建于",
+                updated_at: "更新于",
+                name: "权限名",
             },
         },
         reviews: {

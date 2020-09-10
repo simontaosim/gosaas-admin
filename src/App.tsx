@@ -7,6 +7,8 @@ import authProvider from "./authProvider";
 import englishMessages from "ra-language-english";
 import polyglotI18nProvider from 'ra-i18n-polyglot';
 import zhCnMessages from "./i18n/zh";
+import roles from "./roles";
+import firms from "./firms";
 
 
 const i18nProvider = polyglotI18nProvider((locale:string) => {
@@ -28,7 +30,9 @@ const App = () => {
 }
   return (<Admin dashboard={dashboard} dataProvider={dataProvider} authProvider={authProvider}  i18nProvider={i18nProvider}>
   <Resource name="users" list={users.list} edit={users.edit}  create={users.create}/>
-  <Resource name="roles" list={users.list} edit={EditGuesser} />
+  <Resource name="roles" list={roles.list} edit={roles.edit} create={roles.create} />
+  <Resource name="permissions" list={roles.list} edit={roles.edit} create={roles.create} />
+  <Resource name="firms" list={firms.list} edit={firms.edit} create={firms.create} />
 </Admin>)}
 
 export default App;
