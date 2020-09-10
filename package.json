@@ -10,10 +10,15 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "query-string": "^6.13.1",
+    "ra-i18n-polyglot": "^3.8.4",
+    "ra-language-english": "^3.8.4",
+    "ra-language-french": "^3.8.4",
     "react": "^16.13.1",
+    "react-admin": "^3.8.3",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
-    "typescript": "~3.7.2"
+    "typescript": "^4.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
