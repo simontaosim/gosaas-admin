@@ -9,6 +9,7 @@ import polyglotI18nProvider from 'ra-i18n-polyglot';
 import zhCnMessages from "./i18n/zh";
 import roles from "./roles";
 import firms from "./firms";
+import userAgencyRelations from "./userAgencyRelations";
 
 
 const i18nProvider = polyglotI18nProvider((locale:string) => {
@@ -33,6 +34,7 @@ const App = () => {
   <Resource name="roles" list={roles.list} edit={roles.edit} create={roles.create} />
   <Resource name="permissions" list={roles.list} edit={roles.edit} create={roles.create} />
   <Resource name="firms" list={firms.list} edit={firms.edit} create={firms.create} />
+  <Resource name="user_agency_relations" list={userAgencyRelations.list} create={userAgencyRelations.create} />
 </Admin>)}
 
 export default App;

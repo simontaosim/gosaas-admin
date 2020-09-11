@@ -331,6 +331,16 @@ const zhCnMessages: TranslationMessages = {
                 name: "权限名",
             },
         },
+        user_agency_relations: {
+            name: '推荐关系',
+            fields: {
+                id: '编号',
+                created_at: "创建于",
+                updated_at: "更新于",
+                user_id: "被推荐用户",
+                parent_user_id: "推荐的用户"
+            },
+        },
         reviews: {
             name: 'Review |||| Reviews',
             amount: '1 review |||| %{smart_count} reviews',
