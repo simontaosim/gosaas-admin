@@ -332,7 +332,7 @@ const zhCnMessages: TranslationMessages = {
             },
         },
         user_agency_relations: {
-            name: '推荐关系',
+            name: '代理推荐',
             fields: {
                 id: '编号',
                 created_at: "创建于",

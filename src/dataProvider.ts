@@ -32,7 +32,7 @@ export default {
 
     getMany: (resource: any, params: { ids: any; }) => {
         const query = {
-            filter: JSON.stringify({ id: params.ids }),
+            filter: JSON.stringify({ ids: params.ids }),
         };
         const url = `${apiUrl}/${resource}?${stringify(query)}`;
         return httpClient(url).then(({ json }: any) => ({ data: json }));
