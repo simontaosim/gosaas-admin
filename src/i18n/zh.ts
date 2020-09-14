@@ -331,7 +331,7 @@ const zhCnMessages: TranslationMessages = {
                 name: "权限名",
             },
         },
-        user_agency_relations: {
+        user_agencies: {
             name: '推荐关系',
             fields: {
                 id: '编号',

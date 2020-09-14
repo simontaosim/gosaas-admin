@@ -5,7 +5,7 @@ import {
 
 
 
-export const UserAgencyRelationCreate = (props: any) => (
+export const UserAgencyCreate = (props: any) => (
     <Create {...props}>
         <SimpleForm redirect="list">
             <ReferenceInput source="user_id" reference="users">

@@ -3,7 +3,7 @@ import {
     Edit, SimpleForm, TextInput
 } from 'react-admin';
 
-export const UserAgencyRelationEdit = (props:any) => (
+export const UserAgencyEdit = (props:any) => (
     <Edit {...props}>
         <SimpleForm>
             <TextInput source="name" />
