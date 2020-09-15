@@ -9,10 +9,10 @@ export const UserAgencyCreate = (props: any) => (
     <Create {...props}>
         <SimpleForm redirect="list">
             <ReferenceInput source="user_id" reference="users">
-                <SelectInput optionText="username" />
+                <SelectInput optionText="id" />
             </ReferenceInput>
             <ReferenceInput source="parent_user_id" reference="users">
-                <SelectInput optionText="username" />
+                <SelectInput optionText="id" />
             </ReferenceInput>
         </SimpleForm>
     </Create>

@@ -7,6 +7,7 @@ const zhCnMessages: TranslationMessages = {
     "username_already_exist": "用户名已存在",
     "mobile_already_exist": "手机号已存在",
     "email_already_exist": "邮箱已经存在",
+    "UserAgency_Already_Exist": "用户推荐关系已经存在",
     ra: {
         action: {
             add_filter: 'Add filter',
@@ -337,8 +338,24 @@ const zhCnMessages: TranslationMessages = {
                 id: '编号',
                 created_at: "创建于",
                 updated_at: "更新于",
-                user_id: "被推荐用户",
-                parent_user_id: "推荐的用户"
+                user_id: "用户",
+                parent_user_id: "推荐人",
+                leader_ids: "所在团队"
+            },
+        },
+        agency_teams: {
+            name: '团队奖',
+            fields: {
+                id: '编号',
+                created_at: "创建于",
+                updated_at: "更新于",
+                leader_id: "队长",
+                member_count: "成员人数",
+                team_performance: "业绩",
+                team_prize_qualification: "团队奖资格",
+                team_prize_level: "团队奖等级",
+                total_team_prize: "累计奖金"
+                
             },
         },
         reviews: {
