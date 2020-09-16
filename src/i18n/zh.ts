@@ -358,6 +358,18 @@ const zhCnMessages: TranslationMessages = {
                 
             },
         },
+        user_achievements: {
+            name: '业绩',
+            fields: {
+                id: '编号',
+                created_at: "创建于",
+                updated_at: "更新于",
+                performance: "业绩金额(元)",
+                user_id: "所属用户",
+                is_appointed: "佣金是否分配"
+                
+            },
+        },
         reviews: {
             name: 'Review |||| Reviews',
             amount: '1 review |||| %{smart_count} reviews',

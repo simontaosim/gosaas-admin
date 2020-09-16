@@ -10,6 +10,7 @@ import roles from "./roles";
 import firms from "./firms";
 import userAgencyRelations from "./userAgency";
 import agencyTeams from "./agencyTeams";
+import userAchievements from "./userAchievements";
 
 
 const i18nProvider = polyglotI18nProvider((locale:string) => {
@@ -35,7 +36,8 @@ const App = () => {
   <Resource name="permissions" list={roles.list} edit={roles.edit} create={roles.create} />
   <Resource name="firms" list={firms.list} edit={firms.edit} create={firms.create} />
   <Resource name="user_agencies" list={userAgencyRelations.list} create={userAgencyRelations.create} />
-  <Resource name="agency_teams" list={agencyTeams.list} edit={EditGuesser} />
+  <Resource name="agency_teams" list={agencyTeams.list} edit={agencyTeams.edit} />
+  <Resource name="user_achievements" list={userAchievements.list} create={userAchievements.create} />
 </Admin>)}
 
 export default App;

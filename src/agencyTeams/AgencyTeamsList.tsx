@@ -20,7 +20,7 @@ export const AgencyTeamsList = (props:any) => (
             {/* <NumberField source="LeaderID" />
              */}
               <ReferenceField  source="leader_id" reference="users">
-                    <TextField source="id" />
+                    <TextField source="username" />
                 </ReferenceField>
             <NumberField source="member_count" />
             <NumberField source="team_performance" />
