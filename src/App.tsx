@@ -11,6 +11,7 @@ import firms from "./firms";
 import userAgencyRelations from "./userAgency";
 import agencyTeams from "./agencyTeams";
 import userAchievements from "./userAchievements";
+import { Layout } from "./layout";
 
 
 const i18nProvider = polyglotI18nProvider((locale:string) => {
@@ -30,7 +31,7 @@ const App = () => {
         </div>
     );
 }
-  return (<Admin dashboard={dashboard} dataProvider={dataProvider} authProvider={authProvider}  i18nProvider={i18nProvider}>
+  return (<Admin dashboard={dashboard} dataProvider={dataProvider} authProvider={authProvider} layout={Layout}  i18nProvider={i18nProvider}>
   <Resource name="users" list={users.list} edit={users.edit}  create={users.create}/>
   <Resource name="roles" list={roles.list} edit={roles.edit} create={roles.create} />
   <Resource name="permissions" list={roles.list} edit={roles.edit} create={roles.create} />

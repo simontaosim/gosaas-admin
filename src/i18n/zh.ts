@@ -8,13 +8,14 @@ const zhCnMessages: TranslationMessages = {
     "mobile_already_exist": "手机号已存在",
     "email_already_exist": "邮箱已经存在",
     "UserAgency_Already_Exist": "用户推荐关系已经存在",
+   
     ra: {
         action: {
-            add_filter: 'Add filter',
-            add: 'Add',
-            back: 'Go Back',
+            add_filter: '添加筛选',
+            add: '新增',
+            back: '返回',
             bulk_actions: '%{smart_count} 项被选中',
-            cancel: 'Cancel',
+            cancel: '取消',
             clear_input_value: 'Clear value',
             clone: 'Clone',
             confirm: 'Confirm',
@@ -23,7 +24,7 @@ const zhCnMessages: TranslationMessages = {
             edit: '编辑',
             export: '导出CSV',
             list: 'List',
-            refresh: 'Refresh',
+            refresh: '刷新',
             remove_filter: 'Remove this filter',
             remove: 'Remove',
             save: '保存',
@@ -85,7 +86,7 @@ const zhCnMessages: TranslationMessages = {
             invalid_form: 'The form is not valid. Please check for errors',
             loading: 'The page is loading, just a moment please',
             no: 'No',
-            not_found: 'Either you typed a wrong URL, or you followed a bad link.',
+            not_found: '请检查您的地址是否输入正确',
             yes: 'Yes',
             unsaved_changes: "Some of your changes weren't saved. Are you sure you want to ignore them?",
         },
@@ -106,8 +107,8 @@ const zhCnMessages: TranslationMessages = {
             DESC: 'descending',
         },
         auth: {
-            auth_check_error: 'Please login to continue',
-            user_menu: 'Profile',
+            auth_check_error: '请先登录',
+            user_menu: '个人菜单',
             username: 'Username',
             password: 'Password',
             sign_in: 'Sign in',
@@ -139,8 +140,8 @@ const zhCnMessages: TranslationMessages = {
         },
     },
     pos: {
-        search: 'Search',
-        configuration: 'Configuration',
+        search: '搜索',
+        configuration: '设置',
         language: 'Language',
         theme: {
             name: 'Theme',
@@ -167,9 +168,10 @@ const zhCnMessages: TranslationMessages = {
             },
         },
         menu: {
-            sales: 'Sales',
-            catalog: 'Catalog',
-            customers: 'Customers',
+            buildings: '房源楼盘',
+            agencyTeams: '团队奖',
+            orders: '订单',
+            moneyMenu: "财务管理"
         },
     },
     resources: {
@@ -357,6 +359,18 @@ const zhCnMessages: TranslationMessages = {
                 total_team_prize: "累计奖金"
                 
             },
+        },
+        orders: {
+            name: "订单",
+        }, 
+        house_units:{
+            name: "房号"
+        },
+        house_unit_types:{
+            name: "户型"
+        },
+        buildings: {
+            name: "楼盘"
         },
         user_achievements: {
             name: '业绩',
