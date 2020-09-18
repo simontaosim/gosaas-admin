@@ -8,7 +8,7 @@ const zhCnMessages: TranslationMessages = {
     "mobile_already_exist": "手机号已存在",
     "email_already_exist": "邮箱已经存在",
     "UserAgency_Already_Exist": "用户推荐关系已经存在",
-   
+
     ra: {
         action: {
             add_filter: '添加筛选',
@@ -91,13 +91,13 @@ const zhCnMessages: TranslationMessages = {
             unsaved_changes: "Some of your changes weren't saved. Are you sure you want to ignore them?",
         },
         navigation: {
-            no_results: 'No results found',
+            no_results: '暂无记录',
             no_more_results: 'The page number %{page} is out of boundaries. Try the previous page.',
             page_out_of_boundaries: 'Page number %{page} out of boundaries',
             page_out_from_end: 'Cannot go after last page',
             page_out_from_begin: 'Cannot go before page 1',
             page_range_info: '%{offsetBegin}-%{offsetEnd} of %{total}',
-            page_rows_per_page: '每页记录数:',
+            page_rows_per_page: '每页:',
             next: '下一页',
             prev: '上一页',
         },
@@ -171,7 +171,9 @@ const zhCnMessages: TranslationMessages = {
             buildings: '房源楼盘',
             agencyTeams: '团队奖',
             orders: '订单',
-            moneyMenu: "财务管理"
+            moneyMenu: "财务管理",
+            permissionMenu: "权限管理",
+            firmMenu: "企业管理"
         },
     },
     resources: {
@@ -303,7 +305,10 @@ const zhCnMessages: TranslationMessages = {
                 username: "用户名",
                 mobile: "手机号",
                 idCardNumber: "身份证",
-                email: '邮箱'
+                email: '邮箱',
+                is_registerd: "是否注册",
+                is_pass_set: "是否设置密码"
+
             },
 
         },
@@ -316,13 +321,32 @@ const zhCnMessages: TranslationMessages = {
                 name: "角色名",
             },
         },
-        firms: {
-            name: '公司',
+        user_income_bills: {
+            name: '用户收入',
             fields: {
                 id: '编号',
                 created_at: "创建于",
                 updated_at: "更新于",
-                name: "公司名",
+                name: "角色名",
+            },
+        },
+        firms: {
+            name: '企业',
+            fields: {
+                id: '编号',
+                created_at: "创建于",
+                updated_at: "更新于",
+                firm_category_id: "分类",
+                name: "企业名",
+            },
+        },
+        firm_categories: {
+            name: '企业分类',
+            fields: {
+                id: '编号',
+                created_at: "创建于",
+                updated_at: "更新于",
+                name: "分类名",
             },
         },
         permissions: {
@@ -357,16 +381,24 @@ const zhCnMessages: TranslationMessages = {
                 team_prize_qualification: "团队奖资格",
                 team_prize_level: "团队奖等级",
                 total_team_prize: "累计奖金"
-                
+
             },
         },
-        orders: {
+        house_orders: {
             name: "订单",
-        }, 
-        house_units:{
+            fields: {
+                price: "成交价格",
+                user_id: "客户",
+                agency_id: "所属经纪人",
+                achievement_type: "分成类别",
+                performance: "分成金额",
+                achievenment_ratio: "分成比例",
+            }
+        },
+        house_units: {
             name: "房号"
         },
-        house_unit_types:{
+        house_unit_types: {
             name: "户型"
         },
         buildings: {
@@ -381,7 +413,7 @@ const zhCnMessages: TranslationMessages = {
                 performance: "业绩金额(元)",
                 user_id: "所属用户",
                 is_appointed: "佣金是否分配"
-                
+
             },
         },
         reviews: {

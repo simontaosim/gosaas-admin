@@ -16,7 +16,11 @@ import orders from '../orders';
 import userAchievements from '../userAchievements';
 import MoneyIcon from '@material-ui/icons/Money';
 import users from '../users';
-type MenuName = 'menuBuildings' | 'agencyTeams' | 'orders' | 'moneyMenu';
+import permissions from '../permissions';
+import roles from '../roles';
+import firms from '../firms';
+import firmCategories from '../firmCategories';
+type MenuName = 'menuBuildings' | 'agencyTeams' | 'orders' | 'moneyMenu' | 'permissionMenu' | 'firmMenu';
 
 interface Props {
     dense: boolean;
@@ -30,6 +34,8 @@ const Menu: FC<Props> = ({ onMenuClick, dense, logout }) => {
         agencyTeams: false,
         orders: false,
         moneyMenu: false,
+        permissionMenu: false,
+        firmMenu: false,
     });
     const translate = useTranslate();
     const isXSmall = useMediaQuery((theme: Theme) =>
@@ -134,8 +140,8 @@ const Menu: FC<Props> = ({ onMenuClick, dense, logout }) => {
                 dense={dense}
             >
                 <MenuItemLink
-                    to={`/orders`}
-                    primaryText={translate(`resources.orders.name`, {
+                    to={`/house_orders`}
+                    primaryText={translate(`resources.house_orders.name`, {
                         smart_count: 2,
                     })}
                     leftIcon={<orders.icon />}
@@ -163,8 +169,8 @@ const Menu: FC<Props> = ({ onMenuClick, dense, logout }) => {
                 dense={dense}
             >
                 <MenuItemLink
-                    to={`/orders`}
-                    primaryText={translate(`resources.orders.name`, {
+                    to={`/user_income_bills`}
+                    primaryText={translate(`resources.user_income_bills.name`, {
                         smart_count: 2,
                     })}
                     leftIcon={<orders.icon />}
@@ -175,6 +181,66 @@ const Menu: FC<Props> = ({ onMenuClick, dense, logout }) => {
                 <MenuItemLink
                     to={`/user_achievements`}
                     primaryText={translate(`resources.user_achievements.name`, {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<userAchievements.icon />}
+                    onClick={onMenuClick}
+                    sidebarIsOpen={open}
+                    dense={dense}
+                />
+            </SubMenu>
+            
+
+            <SubMenu
+                handleToggle={() => handleToggle('firmMenu')}
+                isOpen={state.firmMenu}
+                sidebarIsOpen={open}
+                name="pos.menu.firmMenu"
+                icon={<firms.icon/>}
+                dense={dense}
+            >
+                <MenuItemLink
+                    to={`/firms`}
+                    primaryText={translate(`resources.firms.name`, {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<orders.icon />}
+                    onClick={onMenuClick}
+                    sidebarIsOpen={open}
+                    dense={dense}
+                />
+                <MenuItemLink
+                    to={`/firm_categories`}
+                    primaryText={translate(`resources.firm_categories.name`, {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<firmCategories.icon />}
+                    onClick={onMenuClick}
+                    sidebarIsOpen={open}
+                    dense={dense}
+                />
+            </SubMenu>
+            <SubMenu
+                handleToggle={() => handleToggle('permissionMenu')}
+                isOpen={state.permissionMenu}
+                sidebarIsOpen={open}
+                name="pos.menu.permissionMenu"
+                icon={<permissions.icon/>}
+                dense={dense}
+            >
+                <MenuItemLink
+                    to={`/roles`}
+                    primaryText={translate(`resources.roles.name`, {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<roles.icon />}
+                    onClick={onMenuClick}
+                    sidebarIsOpen={open}
+                    dense={dense}
+                />
+                <MenuItemLink
+                    to={`/permissions`}
+                    primaryText={translate(`resources.permissions.name`, {
                         smart_count: 2,
                     })}
                     leftIcon={<userAchievements.icon />}

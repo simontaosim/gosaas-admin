@@ -12,6 +12,8 @@ import userAgencyRelations from "./userAgency";
 import agencyTeams from "./agencyTeams";
 import userAchievements from "./userAchievements";
 import { Layout } from "./layout";
+import orders from "./orders";
+import firmCategories from "./firmCategories";
 
 
 const i18nProvider = polyglotI18nProvider((locale:string) => {
@@ -39,6 +41,8 @@ const App = () => {
   <Resource name="user_agencies" list={userAgencyRelations.list} create={userAgencyRelations.create} />
   <Resource name="agency_teams" list={agencyTeams.list} edit={agencyTeams.edit} />
   <Resource name="user_achievements" list={userAchievements.list} create={userAchievements.create} />
+  <Resource name="house_orders" list={orders.list} create={orders.create} />
+  <Resource name="firm_categories" list={firmCategories.list} create={orders.create} />
 </Admin>)}
 
 export default App;

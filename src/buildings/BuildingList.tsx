@@ -3,7 +3,7 @@ import {
     List, Datagrid, NumberField, DateField, TextField,Filter,TextInput,ReferenceInput,SelectInput
 } from 'react-admin';
 
-const FirmFilter = (props:any) => (
+const BuildingFilter = (props:any) => (
     <Filter {...props}>
         <TextInput label="搜索：企业名" source="q" alwaysOn />
        
@@ -11,9 +11,9 @@ const FirmFilter = (props:any) => (
 );
 
 
-export const FirmList = (props: any) => {
+export const BuildingList = (props: any) => {
     return  (
-        <List  filters={<FirmFilter />} sort={{ field: 'id', order: 'DESC' }} {...props} >
+        <List  filters={<BuildingFilter />} sort={{ field: 'id', order: 'DESC' }} {...props} >
             <Datagrid rowClick="edit" >
                 <NumberField source="id" />
                 <DateField source="updated_at" showTime />

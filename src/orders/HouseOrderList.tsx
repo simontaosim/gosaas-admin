@@ -1,11 +1,9 @@
 import * as React from 'react';
 import {
-    List, Datagrid, NumberField, 
-    DateField, TextField,Filter,TextInput,BooleanField,SelectInput
-
+    List, Datagrid, NumberField, DateField, TextField,Filter,TextInput,ReferenceInput,SelectInput
 } from 'react-admin';
 
-const UserFilter = (props:any) => (
+const HouseOrderFilter = (props:any) => (
     <Filter {...props}>
         <TextInput label="搜索：电话|用户名|邮箱" source="q" alwaysOn />
         {/* <ReferenceInput label="User" source="userId" reference="users" allowEmpty>
@@ -15,16 +13,13 @@ const UserFilter = (props:any) => (
 );
 
 
-export const UserList = (props: any) => {
+export const HouseOrderList = (props: any) => {
     return  (
-        <List  filters={<UserFilter />} sort={{ field: 'id', order: 'DESC' }} {...props} >
+        <List  filters={<HouseOrderFilter />} sort={{ field: 'id', order: 'DESC' }} {...props} >
             <Datagrid rowClick="edit" >
                 <NumberField source="id" />
                 <DateField source="updated_at" showTime />
-                <TextField source="username" />
-                <TextField source="mobile" />
-                <BooleanField source="is_pass_set" />
-                <BooleanField source="is_registerd" />
+                <TextField source="price" />
             </Datagrid>
         </List>
     );
