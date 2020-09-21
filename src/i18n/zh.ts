@@ -35,8 +35,8 @@ const zhCnMessages: TranslationMessages = {
             unselect: 'Unselect',
             expand: 'Expand',
             close: 'Close',
-            open_menu: 'Open menu',
-            close_menu: 'Close menu',
+            open_menu: '打开导航',
+            close_menu: '关闭导航',
         },
         boolean: {
             true: 'Yes',
@@ -387,6 +387,9 @@ const zhCnMessages: TranslationMessages = {
         house_orders: {
             name: "订单",
             fields: {
+                id: '编号',
+                created_at: "创建于",
+                updated_at: "更新于",
                 price: "成交价格",
                 user_id: "客户",
                 agency_id: "所属经纪人",
@@ -396,17 +399,40 @@ const zhCnMessages: TranslationMessages = {
             }
         },
         house_units: {
-            name: "房号"
+            name: "房号",
+            fields: {
+                id: '编号',
+                created_at: "创建于",
+                updated_at: "更新于",
+                name: ""
+            }
         },
         house_unit_types: {
-            name: "户型"
+            name: "户型",
+            fields: {
+                id: '编号',
+                created_at: "创建于",
+                updated_at: "更新于",
+                name: "户型名",
+                building_id: "所属楼盘",
+                storage: "库存"
+            }
         },
         buildings: {
-            name: "楼盘"
+            name: "楼盘",
+            fields: {
+                id: '编号',
+                created_at: "创建于",
+                updated_at: "更新于",
+                name: "楼盘名称",
+                description: "楼盘描述",
+                firm_id: "所属公司"
+            }
         },
         user_achievements: {
             name: '业绩',
             fields: {
+                
                 id: '编号',
                 created_at: "创建于",
                 updated_at: "更新于",

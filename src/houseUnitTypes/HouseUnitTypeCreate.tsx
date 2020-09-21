@@ -5,12 +5,11 @@ import {
 
 
 
-export const BuildingCreate = (props: any) => (
+export const HouseUnitTypeCreate = (props: any) => (
     <Create {...props}>
         <SimpleForm redirect="list">
             <TextInput source="name" />
-            <TextInput multiline source="description"  />
-            <ReferenceInput source="firm_id" reference="firms">
+            <ReferenceInput source="building_id" reference="buildings">
                 <SelectInput optionText="name" />
             </ReferenceInput>
 

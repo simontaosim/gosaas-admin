@@ -14,6 +14,8 @@ import userAchievements from "./userAchievements";
 import { Layout } from "./layout";
 import orders from "./orders";
 import firmCategories from "./firmCategories";
+import buildings from "./buildings";
+import houseUnitTypes from "./houseUnitTypes";
 
 
 const i18nProvider = polyglotI18nProvider((locale:string) => {
@@ -43,6 +45,8 @@ const App = () => {
   <Resource name="user_achievements" list={userAchievements.list} create={userAchievements.create} />
   <Resource name="house_orders" list={orders.list} create={orders.create} />
   <Resource name="firm_categories" list={firmCategories.list} create={orders.create} />
+  <Resource name="buildings" list={buildings.list} create={buildings.create} />
+  <Resource name="house_unit_types" list={houseUnitTypes.list} create={houseUnitTypes.create} />
 </Admin>)}
 
 export default App;
