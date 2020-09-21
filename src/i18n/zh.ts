@@ -8,7 +8,7 @@ const zhCnMessages: TranslationMessages = {
     "mobile_already_exist": "手机号已存在",
     "email_already_exist": "邮箱已经存在",
     "UserAgency_Already_Exist": "用户推荐关系已经存在",
-
+    "Not Found": "接口尚未开发",
     ra: {
         action: {
             add_filter: '添加筛选',
@@ -109,10 +109,10 @@ const zhCnMessages: TranslationMessages = {
         auth: {
             auth_check_error: '请先登录',
             user_menu: '个人菜单',
-            username: 'Username',
-            password: 'Password',
-            sign_in: 'Sign in',
-            sign_in_error: 'Authentication failed, please retry',
+            username: '用户名',
+            password: '密码',
+            sign_in: '登录',
+            sign_in_error: '认证失败，请稍后重试',
             logout: '登出',
         },
         notification: {
@@ -128,7 +128,7 @@ const zhCnMessages: TranslationMessages = {
             logged_out: 'Your session has ended, please reconnect.',
         },
         validation: {
-            required: 'Required',
+            required: '必填项',
             minLength: 'Must be %{min} characters at least',
             maxLength: 'Must be %{max} characters or less',
             minValue: 'Must be at least %{min}',
@@ -142,7 +142,7 @@ const zhCnMessages: TranslationMessages = {
     pos: {
         search: '搜索',
         configuration: '设置',
-        language: 'Language',
+        language: '语言',
         theme: {
             name: 'Theme',
             light: 'Light',

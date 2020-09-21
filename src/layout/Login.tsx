@@ -64,14 +64,14 @@ const renderInput = ({
     input: { ...inputProps },
     ...props
 }) => (
-    <TextField
-        error={!!(touched && error)}
-        helperText={touched && error}
-        {...inputProps}
-        {...props}
-        fullWidth
-    />
-);
+        <TextField
+            error={!!(touched && error)}
+            helperText={touched && error}
+            {...inputProps}
+            {...props}
+            fullWidth
+        />
+    );
 
 interface FormValues {
     username?: string;
@@ -97,8 +97,8 @@ const Login = () => {
                     typeof error === 'string'
                         ? error
                         : typeof error === 'undefined' || !error.message
-                        ? 'ra.auth.sign_in_error'
-                        : error.message,
+                            ? 'ra.auth.sign_in_error'
+                            : error.message,
                     'warning'
                 );
             }
@@ -117,66 +117,69 @@ const Login = () => {
     };
 
     return (
-        <Form
-            onSubmit={handleSubmit}
-            validate={validate}
-            render={({ handleSubmit }) => (
-                <form onSubmit={handleSubmit} noValidate>
-                    <div className={classes.main}>
-                        <Card className={classes.card}>
-                            <div className={classes.avatar}>
-                                <Avatar className={classes.icon}>
-                                    <LockIcon />
-                                </Avatar>
-                            </div>
-                            <div className={classes.hint}>
-                                Hint: demo / demo
-                            </div>
-                            <div className={classes.form}>
-                                <div className={classes.input}>
-                                    <Field
-                                        autoFocus
-                                        name="username"
-                                        // @ts-ignore
-                                        component={renderInput}
-                                        label={translate('ra.auth.username')}
-                                        disabled={loading}
-                                    />
+        <div>
+            <Form
+                onSubmit={handleSubmit}
+                validate={validate}
+                render={({ handleSubmit }) => (
+                    <form onSubmit={handleSubmit} noValidate>
+                        <div className={classes.main}>
+                            <Card className={classes.card}>
+                                <div className={classes.avatar}>
+                                    <Avatar className={classes.icon}>
+                                        <LockIcon />
+                                    </Avatar>
                                 </div>
-                                <div className={classes.input}>
-                                    <Field
-                                        name="password"
-                                        // @ts-ignore
-                                        component={renderInput}
-                                        label={translate('ra.auth.password')}
-                                        type="password"
-                                        disabled={loading}
-                                    />
-                                </div>
+                                <div className={classes.hint}>
+                                    OK经纪
                             </div>
-                            <CardActions className={classes.actions}>
-                                <Button
-                                    variant="contained"
-                                    type="submit"
-                                    color="primary"
-                                    disabled={loading}
-                                    fullWidth
-                                >
-                                    {loading && (
-                                        <CircularProgress
-                                            size={25}
-                                            thickness={2}
+                                <div className={classes.form}>
+                                    <div className={classes.input}>
+                                        <Field
+                                            autoFocus
+                                            name="username"
+                                            // @ts-ignore
+                                            component={renderInput}
+                                            label={translate('ra.auth.username')}
+                                            disabled={loading}
                                         />
-                                    )}
-                                    {translate('ra.auth.sign_in')}
-                                </Button>
-                            </CardActions>
-                        </Card>
-                        <Notification />
-                    </div>
-                </form>
-            )}
-        />
+                                    </div>
+                                    <div className={classes.input}>
+                                        <Field
+                                            name="password"
+                                            // @ts-ignore
+                                            component={renderInput}
+                                            label={translate('ra.auth.password')}
+                                            type="password"
+                                            disabled={loading}
+                                        />
+                                    </div>
+                                </div>
+                                <CardActions className={classes.actions}>
+                                    <Button
+                                        variant="contained"
+                                        type="submit"
+                                        color="primary"
+                                        disabled={loading}
+                                        fullWidth
+                                    >
+                                        {loading && (
+                                            <CircularProgress
+                                                size={25}
+                                                thickness={2}
+                                            />
+                                        )}
+                                        {translate('ra.auth.sign_in')}
+                                    </Button>
+                                </CardActions>
+                            </Card>
+                            <Notification />
+                        </div>
+                    </form>
+                )}
+            />
+        </div>
+
     );
 };
 
