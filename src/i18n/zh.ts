@@ -404,7 +404,13 @@ const zhCnMessages: TranslationMessages = {
                 id: '编号',
                 created_at: "创建于",
                 updated_at: "更新于",
-                name: ""
+                location: "朝向",
+                building_id: "所属楼盘",
+                description: "描述",
+                house_unit_type_id: "户型",
+                house_unit_type: "户型",
+                unit_number: "户号",
+                "HouseUnitType.building_id": "所属开发商"
             }
         },
         house_unit_types: {
@@ -426,7 +432,7 @@ const zhCnMessages: TranslationMessages = {
                 updated_at: "更新于",
                 name: "楼盘名称",
                 description: "楼盘描述",
-                firm_id: "所属公司"
+                firm_id: "开发商"
             }
         },
         user_achievements: {

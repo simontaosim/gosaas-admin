@@ -15,11 +15,11 @@ export const HouseOrderCreate = (props: any) => (
                 <AutocompleteInput optionText="username" />
             </ReferenceInput>
             
-            <SelectInput emptyValue={0} source="achievement_type" choices={[
+            {/* <SelectInput emptyValue={0} source="achievement_type" choices={[
                 { id: 0, name: '比例（百分比）' },
                 { id: 1, name: '定额' },
-            ]} />
-             <FormDataConsumer>
+            ]} /> */}
+             {/* <FormDataConsumer>
                 {({ formData, ...rest }:any) =>
                     {
                         
@@ -34,7 +34,7 @@ export const HouseOrderCreate = (props: any) => (
                         }
                     }
                 }
-            </FormDataConsumer>
+            </FormDataConsumer> */}
         </SimpleForm>
     </Create>
 );

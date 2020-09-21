@@ -16,6 +16,7 @@ import orders from "./orders";
 import firmCategories from "./firmCategories";
 import buildings from "./buildings";
 import houseUnitTypes from "./houseUnitTypes";
+import houseUnits from "./houseUnits";
 
 
 const i18nProvider = polyglotI18nProvider((locale:string) => {
@@ -47,6 +48,7 @@ const App = () => {
   <Resource name="firm_categories" list={firmCategories.list} create={orders.create} />
   <Resource name="buildings" list={buildings.list} create={buildings.create} />
   <Resource name="house_unit_types" list={houseUnitTypes.list} create={houseUnitTypes.create} />
+  <Resource name="house_units" list={houseUnits.list} create={houseUnits.create} />
 </Admin>)}
 
 export default App;
