@@ -10,6 +10,12 @@ const BuildingFilter = (props:any) => (
     </Filter>
 );
 
+const AchievementField = ({ source, record = {} }:any) => {
+    return (
+        <span>{record["achievement_type"] === 0 ? record["achievenment_ratio"]+"%": record[source]+"元"}</span>
+    )
+}
+
 
 export const BuildingList = (props: any) => {
     return  (
@@ -21,6 +27,8 @@ export const BuildingList = (props: any) => {
                 <ReferenceField source="firm_id" reference="firms">
                     <TextField source="name" />
                 </ReferenceField>
+                <AchievementField source="performance" />
+
             </Datagrid>
         </List>
     );

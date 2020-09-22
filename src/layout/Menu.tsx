@@ -159,6 +159,16 @@ const Menu: FC<Props> = ({ onMenuClick, dense, logout }) => {
                     sidebarIsOpen={open}
                     dense={dense}
                 />
+                 <MenuItemLink
+                    to={`/team_achievements`}
+                    primaryText={translate(`resources.team_achievements.name`, {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<userAchievements.icon />}
+                    onClick={onMenuClick}
+                    sidebarIsOpen={open}
+                    dense={dense}
+                />
             </SubMenu>
             <SubMenu
                 handleToggle={() => handleToggle('moneyMenu')}
@@ -179,8 +189,8 @@ const Menu: FC<Props> = ({ onMenuClick, dense, logout }) => {
                     dense={dense}
                 />
                 <MenuItemLink
-                    to={`/user_achievements`}
-                    primaryText={translate(`resources.user_achievements.name`, {
+                    to={`/user_balances`}
+                    primaryText={translate(`resources.user_balances.name`, {
                         smart_count: 2,
                     })}
                     leftIcon={<userAchievements.icon />}

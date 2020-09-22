@@ -396,6 +396,7 @@ const zhCnMessages: TranslationMessages = {
                 achievement_type: "分成类别",
                 performance: "分成金额",
                 achievenment_ratio: "分成比例",
+                building_id: "楼盘"
             }
         },
         house_units: {
@@ -432,11 +433,38 @@ const zhCnMessages: TranslationMessages = {
                 updated_at: "更新于",
                 name: "楼盘名称",
                 description: "楼盘描述",
-                firm_id: "开发商"
+                firm_id: "开发商",
+                performance: "分佣"
             }
         },
         user_achievements: {
-            name: '业绩',
+            name: '个人业绩',
+            fields: {
+                
+                id: '编号',
+                created_at: "创建于",
+                updated_at: "更新于",
+                performance: "业绩金额(元)",
+                user_id: "所属用户",
+                is_appointed: "佣金是否分配"
+
+            },
+        },
+        user_balances: {
+            name: '用户账户',
+            fields: {
+                
+                id: '编号',
+                created_at: "创建于",
+                updated_at: "更新于",
+                performance: "业绩金额(元)",
+                user_id: "所属用户",
+                is_appointed: "佣金是否分配"
+
+            },
+        },
+        team_achievements: {
+            name: '团队业绩',
             fields: {
                 
                 id: '编号',
