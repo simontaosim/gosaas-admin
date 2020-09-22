@@ -1,8 +1,9 @@
 import { AgencyTeamsList } from "./AgencyTeamsList";
 import { AgencyTeamEdit } from "./AgencyTeamEdit";
-import TollIcon from '@material-ui/icons/Toll';
+import GroupIcon from '@material-ui/icons/Group';
+
 export default {
     list: AgencyTeamsList,
     edit: AgencyTeamEdit,
-    icon: TollIcon
+    icon: GroupIcon
 }

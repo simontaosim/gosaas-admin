@@ -472,7 +472,8 @@ const zhCnMessages: TranslationMessages = {
                 updated_at: "更新于",
                 performance: "业绩金额(元)",
                 user_id: "所属用户",
-                is_appointed: "佣金是否分配"
+                is_appointed: "佣金是否分配",
+                "AgencyTeam.leader_id": "所属团队"
 
             },
         },

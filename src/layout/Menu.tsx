@@ -20,6 +20,7 @@ import permissions from '../permissions';
 import roles from '../roles';
 import firms from '../firms';
 import firmCategories from '../firmCategories';
+import teamAchievements from '../teamAchievements';
 type MenuName = 'menuBuildings' | 'agencyTeams' | 'orders' | 'moneyMenu' | 'permissionMenu' | 'firmMenu';
 
 interface Props {
@@ -164,7 +165,7 @@ const Menu: FC<Props> = ({ onMenuClick, dense, logout }) => {
                     primaryText={translate(`resources.team_achievements.name`, {
                         smart_count: 2,
                     })}
-                    leftIcon={<userAchievements.icon />}
+                    leftIcon={<teamAchievements.icon />}
                     onClick={onMenuClick}
                     sidebarIsOpen={open}
                     dense={dense}
