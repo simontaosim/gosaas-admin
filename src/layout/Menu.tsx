@@ -180,7 +180,7 @@ const Menu: FC<Props> = ({ onMenuClick, dense, logout }) => {
                 dense={dense}
             >
                 <MenuItemLink
-                    to={`/user_income_bills`}
+                    to={`/user_balance_incomes`}
                     primaryText={translate(`resources.user_income_bills.name`, {
                         smart_count: 2,
                     })}
