@@ -1,4 +1,5 @@
-const apiUrl = 'http://localhost:8080/api/v1';
+const apiUrl = 'http://zhujietong.com:8080/api/v1';
+
 export default {
     // called when the user attempts to log in
     login: ({ username, password }:any) => {
