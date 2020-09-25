@@ -19,6 +19,7 @@ import houseUnitTypes from "./houseUnitTypes";
 import houseUnits from "./houseUnits";
 import teamAchievements from "./teamAchievements";
 import userIncomes from "./userIncomes";
+import userBalances from "./userBalances";
 
 
 const i18nProvider = polyglotI18nProvider((locale:string) => {
@@ -53,6 +54,7 @@ const App = () => {
   <Resource name="house_units" list={houseUnits.list} create={houseUnits.create} />
   <Resource name="team_achievements" list={teamAchievements.list} create={houseUnits.create} />
   <Resource name="user_balance_incomes" list={userIncomes.list} create={houseUnits.create} />
+  <Resource name="user_balances" list={userBalances.list} create={houseUnits.create} />
 </Admin>)}
 
 export default App;

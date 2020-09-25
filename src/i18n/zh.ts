@@ -457,9 +457,11 @@ const zhCnMessages: TranslationMessages = {
                 id: '编号',
                 created_at: "创建于",
                 updated_at: "更新于",
-                performance: "业绩金额(元)",
+                fund: "可用资金(元)",
+                may_fund: "潜在资金(元)",
+                coming_fund: "待入账资金(元)",
+                charging_fund: "待出账资金(元)",
                 user_id: "所属用户",
-                is_appointed: "佣金是否分配"
 
             },
         },
@@ -476,6 +478,18 @@ const zhCnMessages: TranslationMessages = {
                 "AgencyTeam.leader_id": "所属团队"
 
             },
+        },
+        user_balance_incomes:{
+            name: "用户收入明细",
+            fields: {
+                id: '编号',
+                created_at: "创建于",
+                updated_at: "更新于",
+                fund: "收入(元)",
+                "UserBalance.user_id": "所属用户",
+                status: "状态",
+                note: "备注"
+            }
         },
         reviews: {
             name: 'Review |||| Reviews',

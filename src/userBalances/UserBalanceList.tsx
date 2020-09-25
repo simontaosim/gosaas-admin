@@ -13,30 +13,19 @@ const UserIncomeFilter = (props: any) => (
 );
 
 
-const StatusField = ({ source, record = {} }: any) => {
-    return (
-        <span>
-            {
-                record[source] === 0 ?
-                    "待入账"
-                    :
-                    record[source] === 1 ?  "已入账" : "已取消"
-            }
-        </span>
-    )
-}
 
-export const UserIncomeList = (props: any) => {
+export const UserBalanceList = (props: any) => {
     return (
         <List filters={<UserIncomeFilter />} sort={{ field: 'id', order: 'DESC' }} {...props} >
             <Datagrid rowClick="edit" >
                 <NumberField source="id" />
-                <ReferenceField source="UserBalance.user_id" reference="users">
+                <ReferenceField source="user_id" reference="users">
                     <TextField source="username" />
                 </ReferenceField>
                 <TextField source="fund" />
-                <StatusField source="status" />
-                <TextField source="note" />
+                <TextField source="may_fund" />
+                <TextField source="coming_fund" />
+                <TextField source="charging_fund" />
                 <DateField source="updated_at" showTime />
             </Datagrid>
         </List>
