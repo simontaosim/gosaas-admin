@@ -4,7 +4,7 @@ import { HttpError } from 'react-admin';
 import { resolve } from 'dns';
 
 
-const apiUrl = 'http://localhost:8080/api/v1';
+const apiUrl = 'http://zhujietong.com:8080/api/v1';
 const httpClient = fetchUtils.fetchJson;
 
 
