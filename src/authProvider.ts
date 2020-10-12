@@ -1,11 +1,12 @@
-const apiUrl = 'http://zhujietong.com:8080/api/v1';
+// const apiUrl = 'http://zhujietong.com:8080/api/v1';
+const apiUrl = 'http://127.0.0.1:8080/api/v1';
 
 export default {
     // called when the user attempts to log in
-    login: ({ username, password }:any) => {
+    login: ({ username, password, type }:any) => {
         const request = new Request(`${apiUrl}/auth`, {
             method: 'POST',
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({ username, password, type }),
             headers: new Headers({ 'Content-Type': 'application/json' }),
         });
         return fetch(request)

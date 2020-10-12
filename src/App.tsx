@@ -11,7 +11,7 @@ import firms from "./firms";
 import userAgencyRelations from "./userAgency";
 import agencyTeams from "./agencyTeams";
 import userAchievements from "./userAchievements";
-import { Layout } from "./layout";
+import { Layout, Login } from "./layout";
 import orders from "./orders";
 import firmCategories from "./firmCategories";
 import buildings from "./buildings";
@@ -39,7 +39,7 @@ const App = () => {
         </div>
     );
 }
-  return (<Admin dashboard={dashboard} dataProvider={dataProvider} authProvider={authProvider} layout={Layout}  i18nProvider={i18nProvider}>
+  return (<Admin dashboard={dashboard} dataProvider={dataProvider} authProvider={authProvider} layout={Layout}  i18nProvider={i18nProvider} loginPage={Login}>
   <Resource name="users" list={users.list} edit={users.edit}  create={users.create}/>
   <Resource name="roles" list={roles.list} edit={roles.edit} create={roles.create} />
   <Resource name="permissions" list={roles.list} edit={roles.edit} create={roles.create} />

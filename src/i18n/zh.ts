@@ -109,7 +109,9 @@ const zhCnMessages: TranslationMessages = {
         auth: {
             auth_check_error: '请先登录',
             user_menu: '个人菜单',
-            username: '用户名',
+            username: '用户名 | 手机号 | 邮箱',
+            mobile: "手机号",
+            mobile_sms: "验证码",
             password: '密码',
             sign_in: '登录',
             sign_in_error: '认证失败，请稍后重试',

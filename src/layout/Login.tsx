@@ -12,12 +12,26 @@ import CardActions from '@material-ui/core/CardActions';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import TextField from '@material-ui/core/TextField';
 import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
+import { ThemeProvider, Theme, useTheme } from '@material-ui/core/styles';
 import LockIcon from '@material-ui/icons/Lock';
 
 import { Notification } from 'react-admin';
 import { useTranslate, useLogin, useNotify } from 'ra-core';
 import { lightTheme } from './themes';
+
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import SwipeableViews from 'react-swipeable-views';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+
+interface TabPanelProps {
+    children?: React.ReactNode;
+    dir?: string;
+    index: any;
+    value: any;
+}
 
 const useStyles = makeStyles(theme => ({
     main: {
@@ -79,14 +93,54 @@ interface FormValues {
 }
 
 const { Form } = withTypes<FormValues>();
+function a11yProps(index: any) {
+    return {
+        id: `full-width-tab-${index}`,
+        'aria-controls': `full-width-tabpanel-${index}`,
+    };
+}
+function TabPanel(props: TabPanelProps) {
+    const { children, value, index, ...other } = props;
+
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`full-width-tabpanel-${index}`}
+            aria-labelledby={`full-width-tab-${index}`}
+            {...other}
+        >
+            {value === index && (
+                <Box p={3}>
+                    <Typography>{children}</Typography>
+                </Box>
+            )}
+        </div>
+    );
+}
 
 const Login = () => {
     const [loading, setLoading] = useState(false);
+    const [value, setValue] = useState(0)
     const translate = useTranslate();
     const classes = useStyles();
     const notify = useNotify();
     const login = useLogin();
+    const theme = useTheme();
+
     const location = useLocation<{ nextPathname: string } | null>();
+
+
+    const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+        console.log(newValue);
+
+        setValue(newValue);
+    };
+    // const handleChangeIndex = (index: number) => {
+    //     console.log(index);
+
+    //     setValue(index);
+    // };
 
     const handleSubmit = (auth: FormValues) => {
         setLoading(true);
@@ -118,66 +172,149 @@ const Login = () => {
 
     return (
         <div>
-            <Form
-                onSubmit={handleSubmit}
-                validate={validate}
-                render={({ handleSubmit }) => (
-                    <form onSubmit={handleSubmit} noValidate>
-                        <div className={classes.main}>
-                            <Card className={classes.card}>
-                                <div className={classes.avatar}>
-                                    <Avatar className={classes.icon}>
-                                        <LockIcon />
-                                    </Avatar>
+            <AppBar color="default" position="static">
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    indicatorColor="primary"
+                    textColor="primary"
+                    variant="fullWidth"
+                    aria-label="full width tabs example"
+                >
+                    <Tab label="密码登录" {...a11yProps(0)} />
+                    <Tab label="手机验证码登录" {...a11yProps(1)} />
+                </Tabs>
+            </AppBar>
+            <SwipeableViews
+                axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                index={value}
+            // onChangeIndex={handleChangeIndex}
+            >
+                <TabPanel value={value} index={0} dir={theme.direction}>
+                    <Form
+                        onSubmit={handleSubmit}
+                        validate={validate}
+                        render={({ handleSubmit }) => (
+                            <form onSubmit={handleSubmit} noValidate>
+                                <div className={classes.main}>
+                                    <Card className={classes.card}>
+                                        <div className={classes.avatar}>
+                                            <Avatar className={classes.icon}>
+                                                <LockIcon />
+                                            </Avatar>
+                                        </div>
+                                        <div className={classes.form}>
+                                            <div className={classes.input}>
+                                                <Field
+                                                    autoFocus
+                                                    name="user_key"
+                                                    // @ts-ignore
+                                                    component={renderInput}
+                                                    label={translate('ra.auth.username')}
+                                                    disabled={loading}
+                                                />
+                                            </div>
+                                            <div className={classes.input}>
+                                                <Field
+                                                    name="password"
+                                                    // @ts-ignore
+                                                    component={renderInput}
+                                                    label={translate('ra.auth.password')}
+                                                    type="password"
+                                                    disabled={loading}
+                                                />
+                                            </div>
+
+                                        </div>
+
+                                        <CardActions className={classes.actions}>
+                                            <Button
+                                                variant="contained"
+                                                type="submit"
+                                                color="primary"
+                                                disabled={loading}
+                                                fullWidth
+                                            >
+                                                {loading && (
+                                                    <CircularProgress
+                                                        size={25}
+                                                        thickness={2}
+                                                    />
+                                                )}
+                                                {translate('ra.auth.sign_in')}
+                                            </Button>
+                                        </CardActions>
+                                    </Card>
+                                    <Notification />
                                 </div>
-                                <div className={classes.hint}>
-                                    OK经纪
-                            </div>
-                                <div className={classes.form}>
-                                    <div className={classes.input}>
-                                        <Field
-                                            autoFocus
-                                            name="username"
-                                            // @ts-ignore
-                                            component={renderInput}
-                                            label={translate('ra.auth.username')}
-                                            disabled={loading}
-                                        />
-                                    </div>
-                                    <div className={classes.input}>
-                                        <Field
-                                            name="password"
-                                            // @ts-ignore
-                                            component={renderInput}
-                                            label={translate('ra.auth.password')}
-                                            type="password"
-                                            disabled={loading}
-                                        />
-                                    </div>
+                            </form>
+                        )}
+                    />
+                </TabPanel>
+                <TabPanel value={value} index={1} dir={theme.direction}>
+                    <Form
+                        onSubmit={handleSubmit}
+                        validate={validate}
+                        render={({ handleSubmit }) => (
+                            <form onSubmit={handleSubmit} noValidate>
+                                <div className={classes.main}>
+                                    <Card className={classes.card}>
+                                        <div className={classes.avatar}>
+                                            <Avatar className={classes.icon}>
+                                                <LockIcon />
+                                            </Avatar>
+                                        </div>
+                                        <div className={classes.form}>
+                                            <div className={classes.input}>
+                                                <Field
+                                                    autoFocus
+                                                    name="mobile"
+                                                    // @ts-ignore
+                                                    component={renderInput}
+                                                    label={translate('ra.auth.mobile')}
+                                                    disabled={loading}
+                                                />
+                                            </div>
+                                            <div className={classes.input}>
+                                                <Field
+                                                    name="mobile_sms"
+                                                    // @ts-ignore
+                                                    component={renderInput}
+                                                    label={translate('ra.auth.mobile_sms')}
+                                                    disabled={loading}
+                                                />
+                                            </div>
+
+                                        </div>
+
+                                        <CardActions className={classes.actions}>
+                                            <Button
+                                                variant="contained"
+                                                type="submit"
+                                                color="primary"
+                                                disabled={loading}
+                                                fullWidth
+                                            >
+                                                {loading && (
+                                                    <CircularProgress
+                                                        size={25}
+                                                        thickness={2}
+                                                    />
+                                                )}
+                                                {translate('ra.auth.sign_in')}
+                                            </Button>
+                                        </CardActions>
+                                    </Card>
+                                    <Notification />
                                 </div>
-                                <CardActions className={classes.actions}>
-                                    <Button
-                                        variant="contained"
-                                        type="submit"
-                                        color="primary"
-                                        disabled={loading}
-                                        fullWidth
-                                    >
-                                        {loading && (
-                                            <CircularProgress
-                                                size={25}
-                                                thickness={2}
-                                            />
-                                        )}
-                                        {translate('ra.auth.sign_in')}
-                                    </Button>
-                                </CardActions>
-                            </Card>
-                            <Notification />
-                        </div>
-                    </form>
-                )}
-            />
+                            </form>
+                        )}
+                    />
+
+                </TabPanel>
+
+            </SwipeableViews>
+
         </div>
 
     );
