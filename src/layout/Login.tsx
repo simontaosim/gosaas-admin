@@ -136,11 +136,7 @@ const Login = () => {
 
         setValue(newValue);
     };
-    // const handleChangeIndex = (index: number) => {
-    //     console.log(index);
 
-    //     setValue(index);
-    // };
 
     const handleSubmit = (auth: FormValues) => {
         setLoading(true);
