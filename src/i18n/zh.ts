@@ -10,6 +10,10 @@ const zhCnMessages: TranslationMessages = {
     "UserAgency_Already_Exist": "用户推荐关系已经存在",
     "Not Found": "接口尚未开发",
     "Unauthorized": "认证失败，请检查认证信息",
+    "user_not_found": "用户不存在",
+    "user_password_wrong": "密码错误",
+    "user_sms_wrong": "验证码错误",
+    "send_sms_success":"验证码发送成功",
     ra: {
         action: {
             add_filter: '添加筛选',

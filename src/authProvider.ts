@@ -40,9 +40,9 @@ export default {
                                 )
                             );
                         } 
-                        localStorage.setItem('token', json.id)
+                        localStorage.setItem('token', json.token)
                         return resolve({
-                            data: { id: json.id },
+                            data: { ...json },
                         })
                     }).catch(error=>{
                             reject(error)
@@ -73,5 +73,24 @@ export default {
     
     // called when the user navigates to a new location, to check for permissions / roles
     getPermissions: () => Promise.resolve(),
-    sendSMS: () => Promise.resolve(),
+    sendSMS: ({ mobile }:any) => {
+        const request = new Request(`${apiUrl}/auth/send_sms`, {
+            method: 'POST',
+            body: JSON.stringify({ mobile  }),
+            headers: new Headers({ 'Content-Type': 'application/json' }),
+        });
+
+        return fetch(request)
+                    .then(response =>
+                      {
+                          console.log(response.status);
+                          if(response.status >=  400 || response.status < 200){
+                              throw response.statusText
+                          }
+                          return response.json()
+                          
+                      }
+                      
+                    )
+    },
 };

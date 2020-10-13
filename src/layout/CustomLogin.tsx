@@ -10,8 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { useLocation } from 'react-router-dom';
-import { useLogin, useNotify } from 'ra-core';
+import { useNotify } from 'ra-core';
 import { useTheme } from '@material-ui/core/styles';
 
 import { Notification } from 'react-admin';
@@ -21,8 +20,9 @@ import { Notification } from 'react-admin';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import SwipeableViews from 'react-swipeable-views';
 import authProvider from '../authProvider';
+
+import { useHistory } from 'react-router-dom'
 
 interface FormValues {
     username?: string;
@@ -35,6 +35,8 @@ interface TabPanelProps {
     index: any;
     value: any;
 }
+
+const REQEXP_MOBILE_PATTERN = /^((\+|00)86)?((134\d{4})|((13[0-3|5-9]|14[1|5-9]|15[0-9]|16[2|5|6|7]|17[0-8]|18[0-9]|19[0-2|5-9])\d{8}))$/
 
 function TabPanel(props: TabPanelProps) {
     const { children, value, index, ...other } = props;
@@ -112,6 +114,7 @@ export default function CustomLogin() {
     const classes = useStyles();
     const [value, setValue] = useState(0);
     const [loading, setLoading] = useState(false);
+    const history = useHistory();
     const [formState, dispath] = useReducer((state: any, action: any) => {
         switch (action.type) {
             case "change":
@@ -131,16 +134,14 @@ export default function CustomLogin() {
         mobile_sms: ""
     });
     const notify = useNotify();
-    const login = useLogin();
     const theme = useTheme();
-    const location = useLocation<{ nextPathname: string } | null>();
     const [countDownText, setCountDownText] = useState("获取验证码");
     const [countDownDisAbled, setCountDownDisAbled] = useState(false);
 
 
     const handleTabsChange = (event: React.ChangeEvent<{}>, newValue: number) => {
         setValue(newValue);
-        if(newValue === 0) {
+        if (newValue === 0) {
             dispath({
                 type: "change",
                 payload: {
@@ -148,7 +149,7 @@ export default function CustomLogin() {
                 }
             })
         }
-        if(newValue === 1){
+        if (newValue === 1) {
             dispath({
                 type: "change",
                 payload: {
@@ -161,6 +162,40 @@ export default function CustomLogin() {
 
 
     const handleRquiredSMSClick = (event: React.MouseEvent<{}>) => {
+        const { mobile } = formState;
+        if (mobile === "") {
+            alert("请输入手机号")
+            return false;
+        }
+        if(!REQEXP_MOBILE_PATTERN.test(mobile)){
+            alert("手机号格式不正确")
+            return false;
+        }
+
+        authProvider.sendSMS({ mobile: formState.mobile }).then(rlt => {
+            notify(
+                rlt.message,
+                'info'
+            );
+
+        }).catch(
+            (error: Error) => {
+                setCountDownDisAbled(false);
+
+                notify(
+                    typeof error === 'string'
+                        ? error
+                        : typeof error === 'undefined' || !error.message
+                            ? 'ra.auth.sign_in_error'
+                            : error.message,
+                    'warning'
+                );
+                clearInterval(couter)
+                setCountDownText(`获取验证码`)
+                setCountDownDisAbled(false)
+                countDown = 60
+            }
+        );
         setCountDownDisAbled(true);
         setCountDownText(`${countDown}后重新获取`);
         couter = setInterval(() => {
@@ -176,13 +211,13 @@ export default function CustomLogin() {
         }, 1000)
     }
 
-    const handleSubmit = (e:any) => {
+    const handleSubmit = (e: any) => {
         e.preventDefault();
         setLoading(true);
         authProvider.login(formState).then(rlt => {
+            history.push("/")
             setLoading(false);
-            console.log("loginpage", rlt);
-            
+
         }).catch(
             (error: Error) => {
                 setLoading(false);
@@ -198,8 +233,7 @@ export default function CustomLogin() {
         );
     };
 
-    console.log(formState);
-    
+
 
     return (
         <Grid container component="main" className={classes.root}>
@@ -227,140 +261,135 @@ export default function CustomLogin() {
                             <Tab label="手机验证码登录" {...a11yProps(1)} />
                         </Tabs>
                     </AppBar>
-                    <SwipeableViews
-                        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-                        index={value}
-                    // onChangeIndex={handleChangeIndex}
-                    >
-                        <TabPanel value={value} index={0} dir={theme.direction}>
-                            <form onSubmit={e => handleSubmit(e)} className={classes.form} noValidate>
-                                <TextField
-                                    variant="outlined"
-                                    margin="normal"
-                                    required
-                                    disabled={loading}
-                                    fullWidth
-                                    id="userkey"
-                                    label="用户名 | 手机号 | 邮箱"
-                                    name="user-key"
-                                    autoFocus
-                                    value={formState.userkey}
-                                    onChange={e => dispath({
-                                        type: "change",
-                                        payload: {
-                                            user_key: e.target.value
-                                        }
-                                    })}
-                                />
-                                <TextField
-                                    variant="outlined"
-                                    margin="normal"
-                                    required
-                                    fullWidth
-                                    disabled={loading}
 
-                                    name="password"
-                                    label="密码"
-                                    type="password"
-                                    id="password"
-                                    value={formState.password}
-                                    onChange={e => dispath({
-                                        type: "change",
-                                        payload: {
-                                            password: e.target.value
-                                        }
-                                    })}
-                                />
+                    <TabPanel value={value} index={0} dir={theme.direction}>
+                        <form onSubmit={e => handleSubmit(e)} className={classes.form} noValidate>
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                disabled={loading}
+                                fullWidth
+                                id="userkey"
+                                label="用户名 | 手机号 | 邮箱"
+                                name="user-key"
+                                autoFocus
+                                value={formState.userkey}
+                                onChange={e => dispath({
+                                    type: "change",
+                                    payload: {
+                                        user_key: e.target.value
+                                    }
+                                })}
+                            />
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                disabled={loading}
 
-                                <Button
-                                    type="submit"
-                                    fullWidth
-                                    variant="contained"
-                                    color="primary"
-                                    className={classes.submit}
-                                    disabled={loading}
+                                name="password"
+                                label="密码"
+                                type="password"
+                                id="password"
+                                value={formState.password}
+                                onChange={e => dispath({
+                                    type: "change",
+                                    payload: {
+                                        password: e.target.value
+                                    }
+                                })}
+                            />
 
-                                >
-                                    登录
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                color="primary"
+                                className={classes.submit}
+                                disabled={loading}
+
+                            >
+                                登录
                                 </Button>
-                                <Grid container>
-                                    <Grid item xs>
-                                        <Link href="#" variant="body2">
-                                            忘记密码
+                            <Grid container>
+                                <Grid item xs>
+                                    <Link href="#" variant="body2">
+                                        忘记密码
                                 </Link>
-                                    </Grid>
-                                    <Grid item>
-                                        <Link href="#" variant="body2">
-                                            {"注册"}
-                                        </Link>
-                                    </Grid>
                                 </Grid>
-                                <Box mt={5}>
-                                    <Copyright />
-                                </Box>
-                            </form>
-                        </TabPanel>
-                        <TabPanel value={value} index={1} dir={theme.direction}>
-                            <form onSubmit={e=> handleSubmit(e)} className={classes.form} noValidate>
-                                <TextField
-                                    variant="outlined"
-                                    margin="normal"
-                                    required
-                                    fullWidth
-                                    disabled={loading}
+                                <Grid item>
+                                    <Link href="#" variant="body2">
+                                        {"注册"}
+                                    </Link>
+                                </Grid>
+                            </Grid>
+                            <Box mt={5}>
+                                <Copyright />
+                            </Box>
+                        </form>
+                    </TabPanel>
+                    <TabPanel value={value} index={1} dir={theme.direction}>
+                        <form onSubmit={e => handleSubmit(e)} className={classes.form} noValidate>
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                disabled={loading}
 
-                                    id="mobile"
-                                    label="手机号 "
-                                    name="mobile"
-                                    autoFocus
-                                    value={formState.mobile}
-                                    onChange={e => dispath({
-                                        type: "change",
-                                        payload: {
-                                            mobile: e.target.value
-                                        }
-                                    })}
-                                /><Button onClick={handleRquiredSMSClick} disabled={countDownDisAbled} variant="contained" color="primary" size="small">
-                                    {countDownText}
+                                id="mobile"
+                                label="手机号 "
+                                name="mobile"
+                                autoFocus
+                                value={formState.mobile}
+                                onChange={e => dispath({
+                                    type: "change",
+                                    payload: {
+                                        mobile: e.target.value
+                                    }
+                                })}
+                            /><Button onClick={handleRquiredSMSClick} disabled={countDownDisAbled} variant="contained" color="primary" size="small">
+                                {countDownText}
+                            </Button>
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                disabled={loading}
+
+                                fullWidth
+                                name="password"
+                                label="验证码"
+                                type="password"
+                                id="password"
+                                value={formState.mobile_sms}
+                                onChange={e => dispath({
+                                    type: "change",
+                                    payload: {
+                                        mobile_sms: e.target.value
+                                    }
+                                })}
+                            />
+
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                color="primary"
+                                className={classes.submit}
+                                disabled={loading}
+
+                            >
+                                登录
                                 </Button>
-                                <TextField
-                                    variant="outlined"
-                                    margin="normal"
-                                    required
-                                    disabled={loading}
 
-                                    fullWidth
-                                    name="password"
-                                    label="验证码"
-                                    type="password"
-                                    id="password"
-                                    value={formState.mobile_sms}
-                                    onChange={e => dispath({
-                                        type: "change",
-                                        payload: {
-                                            mobile_sms: e.target.value
-                                        }
-                                    })}
-                                />
-
-                                <Button
-                                    type="submit"
-                                    fullWidth
-                                    variant="contained"
-                                    color="primary"
-                                    className={classes.submit}
-                                    disabled={loading}
-
-                                >
-                                    登录
-            </Button>
-
-                                <Box mt={5}>
-                                    <Copyright />
-                                </Box>
-                            </form>
-                        </TabPanel>
-                    </SwipeableViews>
+                            <Box mt={5}>
+                                <Copyright />
+                            </Box>
+                        </form>
+                    </TabPanel>
                     <Notification />
                 </div>
             </Grid>
