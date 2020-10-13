@@ -124,8 +124,8 @@ export default function CustomLogin() {
                 return state;
         }
     }, {
-        type: "password",
-        userkey: "",
+        auth_type: "password",
+        user_key: "",
         password: "",
         mobile: "",
         mobile_sms: ""
@@ -144,7 +144,7 @@ export default function CustomLogin() {
             dispath({
                 type: "change",
                 payload: {
-                    type: "password"
+                    auth_type: "password"
                 }
             })
         }
@@ -152,7 +152,7 @@ export default function CustomLogin() {
             dispath({
                 type: "change",
                 payload: {
-                    type: "mobile_sms"
+                    auth_type: "mobile_sms"
                 }
             })
         }
@@ -179,7 +179,11 @@ export default function CustomLogin() {
     const handleSubmit = (e:any) => {
         e.preventDefault();
         setLoading(true);
-        authProvider.login(formState).catch(
+        authProvider.login(formState).then(rlt => {
+            setLoading(false);
+            console.log("loginpage", rlt);
+            
+        }).catch(
             (error: Error) => {
                 setLoading(false);
                 notify(
@@ -244,7 +248,7 @@ export default function CustomLogin() {
                                     onChange={e => dispath({
                                         type: "change",
                                         payload: {
-                                            userkey: e.target.value
+                                            user_key: e.target.value
                                         }
                                     })}
                                 />

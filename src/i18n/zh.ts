@@ -9,6 +9,7 @@ const zhCnMessages: TranslationMessages = {
     "email_already_exist": "邮箱已经存在",
     "UserAgency_Already_Exist": "用户推荐关系已经存在",
     "Not Found": "接口尚未开发",
+    "Unauthorized": "认证失败，请检查认证信息",
     ra: {
         action: {
             add_filter: '添加筛选',
