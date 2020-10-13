@@ -3,8 +3,8 @@ import { stringify } from 'query-string';
 import { HttpError } from 'react-admin';
 
 
-const apiUrl = 'http://zhujietong.com:8080/api/v1';
-// const apiUrl = 'http://localhost:8080/api/v1';
+// const apiUrl = 'http://zhujietong.com:8080/api/v1';
+const apiUrl = 'http://localhost:8080/api/v1';
 const httpClient = fetchUtils.fetchJson;
 
 
@@ -118,7 +118,7 @@ export default {
             method: 'DELETE',
         }).then(({ json }: any) => ({ data: json })),
 
-    deleteMany: (resource: any, params: { ids: any; data: any; }) => {
+    deleteMany: (resource: any, params: { ids: any;data:any }) => {
         const query = {
             filter: JSON.stringify({ ids: params.ids }),
         };
