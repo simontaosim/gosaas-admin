@@ -1,7 +1,7 @@
 import { HttpError } from 'react-admin';
 
-// const apiUrl = 'http://zhujietong.com:8080/api/v1';
-const apiUrl = 'http://127.0.0.1:8080/api/v1';
+const apiUrl = 'http://zhujietong.com:8080/api/v1';
+// const apiUrl = 'http://127.0.0.1:8080/api/v1';
 
 export default {
     // called when the user attempts to log in
