@@ -1,7 +1,6 @@
 import { fetchUtils } from 'react-admin';
 import { stringify } from 'query-string';
 import { HttpError } from 'react-admin';
-import { resolve } from 'dns';
 
 
 const apiUrl = 'http://zhujietong.com:8080/api/v1';
