@@ -14,6 +14,7 @@
     "@types/react-router-dom": "^5.1.5",
     "query-string": "^6.13.1",
     "ra-i18n-polyglot": "^3.8.4",
+    "ra-input-rich-text": "^3.9.1",
     "ra-language-french": "^3.8.4",
     "react": "^16.13.1",
     "react-admin": "^3.8.3",

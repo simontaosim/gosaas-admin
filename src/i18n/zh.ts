@@ -30,22 +30,22 @@ const zhCnMessages: TranslationMessages = {
             export: '导出CSV',
             list: 'List',
             refresh: '刷新',
-            remove_filter: 'Remove this filter',
-            remove: 'Remove',
+            remove_filter: '取消此筛选',
+            remove: '删除',
             save: '保存',
             search: '搜索',
-            show: 'Show',
-            sort: 'Sort',
+            show: '展示',
+            sort: '排序',
             undo: '取消',
-            unselect: 'Unselect',
+            unselect: '取消选择',
             expand: 'Expand',
-            close: 'Close',
+            close: '关闭',
             open_menu: '打开导航',
             close_menu: '关闭导航',
         },
         boolean: {
-            true: 'Yes',
-            false: 'No',
+            true: '开启中',
+            false: '关闭中',
             null: '',
         },
         page: {
@@ -62,8 +62,8 @@ const zhCnMessages: TranslationMessages = {
         },
         input: {
             file: {
-                upload_several: 'Drop some files to upload, or click to select one.',
-                upload_single: 'Drop a file to upload, or click to select it.',
+                upload_several: '拖拽或者选择多个文件上传',
+                upload_single: '拖拽或者选择单个文件上传',
             },
             image: {
                 upload_several: 'Drop some pictures to upload, or click to select one.',
@@ -433,15 +433,33 @@ const zhCnMessages: TranslationMessages = {
             }
         },
         buildings: {
-            name: "楼盘",
+            name: "项目",
             fields: {
                 id: '编号',
                 created_at: "创建于",
                 updated_at: "更新于",
-                name: "楼盘名称",
+                name: "项目名称",
                 description: "楼盘描述",
                 firm_id: "开发商",
-                performance: "分佣"
+                performance: "分佣",
+                contract: "合同文件",
+                documents: "项目材料",
+                breif: "项目概述",
+                alias_name: "项目别名",
+                is_published: "是否发布",
+                sell_certificate: "现/预售证号",
+                price_range: "价格区间",
+                main_show_price_type: "主显示价格类型",
+                average_meters_price:"参考均价",
+                meters_price_start:"单价起价",
+                total_price:"参考总价",
+                total_price_start:"总价起价",
+                city:"所在城市",
+                area:"所在区域",
+                sell_address:"销售地址",
+                address_point:"坐标",
+                project_address: "项目地址"
+                
             }
         },
         user_achievements: {
