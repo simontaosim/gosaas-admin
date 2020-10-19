@@ -2,9 +2,8 @@ import * as React from 'react';
 import {
     Create, TabbedForm, TextInput, FormTab, DateInput, NumberInput, BooleanInput, ReferenceManyField, Datagrid, TextField,
     FileInput, FileField, required, number, minValue, ReferenceInput, SelectInput, ReferenceArrayInput, AutocompleteArrayInput,
-    SelectArrayInput
+    SelectArrayInput, ImageInput, ImageField
 } from 'react-admin';
-import RichTextInput from 'ra-input-rich-text';
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 
@@ -30,7 +29,7 @@ export const BuildingCreate = (props: any) => (
                     <SelectInput optionText="name" optionValue="id" validate={required()} />
                 </ReferenceInput>
                 <TextInput source="sell_certificate" validate={required()} />
-                <SelectArrayInput  source="price_range" choices={[
+                <SelectArrayInput source="price_range" choices={[
                     { id: 'music', name: '0.6万以下' },
                     { id: 'photography', name: '0.6万-1万' },
                     { id: 'programming', name: '1万-1.5万' },
@@ -57,38 +56,73 @@ export const BuildingCreate = (props: any) => (
 
                 <Divider></Divider>
                 <Typography>项目地址</Typography>
-                <SelectInput source="area" choices={[
+                <SelectInput source="from_area" choices={[
                     { id: 'programming', name: '金牛区' },
                     { id: 'lifestyle', name: '高新区' },
-                    { id: 'good', name: '成华区 '},
+                    { id: 'good', name: '成华区 ' },
                     { id: 'ddd', name: '锦江区' },
-                    { id: 'good', name: '眉山市 '},
+                    { id: 'good', name: '眉山市 ' },
                 ]} />
-                <TextInput  source="project_address" />
+                <TextInput source="project_address" />
                 <Divider></Divider>
-                <TextInput  source="sell_address"/>
-                <TextInput  source="address_point"/>
+                <TextInput source="sell_address" />
+                <TextInput source="address_point" />
             </FormTab>
             <FormTab label="佣金方案">
-                <RichTextInput source="body" validate={required()} addLabel={false} />
+                <TextInput source="lead_prize_type" />
+                <TextInput source="trade_prize" label="成交奖" />
+                <TextInput source="commission" label="佣金" />
+                <TextInput source="report_rule" label="报备规则" />
+                <TextInput source="lead_rule" label="带看规则" />
+                <TextInput source="commission_rule" label="结佣规则" />
             </FormTab>
             <FormTab label="周边信息">
-                <TextInput label="Password (if protected post)" source="password" type="password" />
-                <DateInput label="Publication date" source="published_at" />
-                <NumberInput source="average_note" validate={[number(), minValue(0)]} />
-                <BooleanInput label="Allow comments?" source="commentable" defaultValue />
-                <TextInput disabled label="Nb views" source="views" />
+                <SelectInput source="building_type" choices={[
+                    { id: "公寓", name: "公寓" }
+                ]} />
+
+                <DateInput label="delivery_time" source="delivery_time" />
+                <NumberInput source="property_right_years" validate={[number(), minValue(0)]} />
+                <NumberInput source="floor_area" validate={[number(), minValue(0)]} />
+                <NumberInput source="covered_area" validate={[number(), minValue(0)]} />
+                <NumberInput source="plot_ratio" validate={[number(), minValue(0)]} />
+                <NumberInput source="green_ratio" validate={[number(), minValue(0)]} />
+                <NumberInput source="car_house_ratio" validate={[number(), minValue(0)]} />
+                <NumberInput source="building_type" validate={[number(), minValue(0)]} />
+                <NumberInput source="house_types_count" validate={[number(), minValue(0)]} />
+                <NumberInput source="house_type_areas" validate={[number(), minValue(0)]} />
+                <TextInput source="building_intro" validate={[number(), minValue(0)]} />
+                <TextInput source="nearby_subways" validate={[number(), minValue(0)]} />
+                <TextInput source="nearby_schools" validate={[number(), minValue(0)]} />
+                <TextInput source="nearby_business" validate={[number(), minValue(0)]} />
+                <TextInput source="nearby_hospitals" validate={[number(), minValue(0)]} />
+                <TextInput source="nearby_others" validate={[number(), minValue(0)]} />
+                <TextInput source="buy_points" validate={[number(), minValue(0)]} />
             </FormTab>
 
+            <FormTab label="物业信息">
+                <TextInput source="property_management" />
+            </FormTab>
             <FormTab label="图片信息">
-
+                <ImageInput source="cover_picture"  accept="image/*">
+                    <ImageField source="src" title="title" />
+                </ImageInput>
+                <ImageInput source="banner_pictures"  accept="image/*">
+                    <ImageField source="src" title="title" />
+                </ImageInput>
+                <TextInput source="house_type_pictures" />
+                
             </FormTab>
             <FormTab label="推荐设置">
-                <TextInput label="Password (if protected post)" source="password" type="password" />
-                <DateInput label="Publication date" source="published_at" />
-                <NumberInput source="average_note" validate={[number(), minValue(0)]} />
-                <BooleanInput label="Allow comments?" source="commentable" defaultValue />
-                <TextInput disabled label="Nb views" source="views" />
+                <BooleanInput  source="can_recommand_agency_list"  />
+                <TextInput  source="can_recommand_agency_list_weight" />
+                <BooleanInput  source="can_recommand_user_list"  />
+                <TextInput  source="can_recommand_user_list_weight" />
+                <BooleanInput  source="can_recommand_hot_buildings"  />
+                <TextInput  source="can_recommand_hot_buildings_weight"  />
+                <BooleanInput  source="can_recommand_high_commission"  />
+                <TextInput  source="can_recommand_high_commission_weight"  />
+                <TextInput  source="can_recommand_high_commission_reason"  />
             </FormTab>
             <FormTab label="人员配置">
                 <ReferenceArrayInput source="zhuchang" reference="users" label="驻场管理人员">
